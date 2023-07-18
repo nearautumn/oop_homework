@@ -6,11 +6,12 @@ public class HotDrink extends Product{
     /**
      * @param name Name of a product
      * @param cost Cost of a product
-     * @param temperature Temperature of a product
+     * @param temperature Temperature of a product. Should be >0 and <100
      * */
     public HotDrink(String name, double cost, int temperature) {
         super(name, cost);
-        this.temperature = temperature;
+        if (temperature < 0 || temperature > 100) throw new IllegalArgumentException("Invalid temperature");
+        else this.temperature = temperature;
     }
 
     // get and set methods
@@ -23,7 +24,7 @@ public class HotDrink extends Product{
 
     @Override
     public String toString() {
-        return String.format("Name: %s  Cost: %f  Temperature: %d",
+        return String.format("Name: %s  Cost: %f BYN  Temperature: %d deg.",
                 getName(), getCost(), getTemperature());
     }
 }
